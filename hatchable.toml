@@ -1,0 +1,15 @@
+[auth]
+enabled = true
+providers = ["email"]
+
+[db.tables.analyses]
+read = "own"
+write = "own"
+
+[db.tables.analysis_skills]
+read = "own"
+write = "own"
+
+[[config]]
+name = "python_service_url"
+description = "Optional HTTPS base URL for a separately deployed Python NLP service. Leave blank to use the native JavaScript analyzer."

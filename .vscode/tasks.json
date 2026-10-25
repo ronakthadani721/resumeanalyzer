@@ -1,0 +1,17 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run ResumeIQ local preview",
+			"type": "shell",
+			"command": "node",
+			"args": [
+				"-e",
+				"const http=require('http'),fs=require('fs'),path=require('path');const root=path.resolve('public');http.createServer((req,res)=>{let p=decodeURIComponent(new URL(req.url,'http://localhost').pathname);if(p==='/')p='/index.html';const f=path.resolve(root,'.'+p);if(!f.startsWith(root+path.sep)&&f!==root){res.writeHead(403).end();return}fs.readFile(f,(e,d)=>{if(e){res.writeHead(404).end('Not found');return}const ext=path.extname(f);res.setHeader('Content-Type',({'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.json':'application/json'}[ext]||'application/octet-stream'));res.end(d)})}).listen(4173,'127.0.0.1',()=>console.log('ResumeIQ preview: http://127.0.0.1:4173'))"
+			],
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "build"
+		}
+	]
+}
