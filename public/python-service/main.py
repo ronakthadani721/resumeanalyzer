@@ -8,6 +8,10 @@ import re
 
 app = FastAPI(title="ResumeIQ NLP Service", version="1.0.0")
 
+@app.get("/")
+def home():
+    return {"message": "ResumeIQ API is running"}
+
 SKILLS = {
     "Programming languages": ["python", "javascript", "java", "c", "c++", "r", "sql"],
     "Data analysis": ["numpy", "pandas", "data cleaning", "exploratory data analysis", "statistics", "excel"],
